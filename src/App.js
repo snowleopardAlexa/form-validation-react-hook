@@ -6,6 +6,13 @@ function App() {
   const initialValues = {username: "", email: "", password: ""};
   const [formValues, setFormValues] = useState(initialValues);
 
+  const handleChange = (e) => {
+    console.log(e.target);
+    const { name, value } = e.target;
+    setFormValues({...formValues, [name]: value});
+    console.log(formValues);
+  }
+
   return (
     <div className="container">
       <form className="form"> 
