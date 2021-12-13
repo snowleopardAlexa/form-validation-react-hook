@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
 
   const initialValues = {username: "", email: "", password: ""};
   const [formValues, setFormValues] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState({});
+
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const handleChange = (e) => {
     console.log(e.target);
@@ -15,7 +18,32 @@ function App() {
 
  const handleSubmit = (e) => {
     e.preventDefalt();
+    setFormErrors(validate(formValues));
+    setIsSubmit(true);
  }
+
+useEffect(() => {
+  console.log(formErrors);
+  if (Object.keys(formErrors).length === 0 && isSubmit {
+    console.log(formValues);
+  }
+}, [formErrors]);
+
+
+const validate = (values) => {
+    const errors = {}
+    const regex = '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$';
+    if (!values.username) {
+      errors.username = "Username is required";
+    }
+    if (!values.email) {
+      errors.email = "Email is required";
+    }
+    if (!values.password) {
+      errors.password = "Password is required";
+    }
+    return errors;
+}
 
   return (
     <div className="container">
