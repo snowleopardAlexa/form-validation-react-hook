@@ -11,11 +11,16 @@ function App() {
     const { name, value } = e.target;
     setFormValues({...formValues, [name]: value});
     console.log(formValues);
-  }
+  };
+
+ const handleSubmit = (e) => {
+    e.preventDefalt();
+ }
 
   return (
     <div className="container">
-      <form className="form"> 
+      <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
+      <form onSubmit={handleSubmit} className="form"> 
         <h1>Registration Form</h1>
         <div className="ui divider"></div>
           <div className="ui form">
