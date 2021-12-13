@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import HideShow from './HideShow';
 
 function App() {
   const initialValues = { 
@@ -175,6 +176,7 @@ function App() {
           <button className="fluid ui button blue">Submit</button>
         </div>
       </form>
+      <HideShow />
     </div>
   );
 }
